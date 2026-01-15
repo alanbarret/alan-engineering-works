@@ -3,9 +3,9 @@
 import Image from 'next/image';
 
 const images = [
-    { src: '/workshop-lathe.png', alt: 'Heavy Duty Lathe Machine' },
-    { src: '/workshop-welding.png', alt: 'Professional Welding' },
-    { src: '/workshop-drilling.png', alt: 'Precision Drilling' },
+    { src: '/alan-engineering-works/workshop-lathe.png', alt: 'Heavy Duty Lathe Machine' },
+    { src: '/alan-engineering-works/workshop-welding.png', alt: 'Professional Welding' },
+    { src: '/alan-engineering-works/workshop-drilling.png', alt: 'Precision Drilling' },
 ];
 
 export default function Gallery() {
