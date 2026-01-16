@@ -27,33 +27,32 @@ export default function QuoteForm() {
         e.preventDefault();
         setStatus('submitting');
 
-        try {
-            const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
+        // Format the message for WhatsApp
+        const message = `*New Quote Request*
+        
+*Name:* ${formData.name}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email}
+*Service:* ${formData.service}
 
-            if (!webhookUrl) {
-                console.warn('N8N Webhook URL not configured. Simulating success.');
-                // Simulate API call delay
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                setStatus('success');
-                return;
-            }
+*Message:*
+${formData.message}`;
 
-            const response = await fetch(webhookUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            });
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(message);
 
-            if (response.ok) {
-                setStatus('success');
-                setFormData({ name: '', phone: '', email: '', service: '', message: '' });
-            } else {
-                setStatus('error');
-            }
-        } catch (error) {
-            console.error("Submission error:", error);
-            setStatus('error');
-        }
+        // WhatsApp number (from contact page)
+        const phoneNumber = "917025424749";
+
+        // Create WhatsApp URL
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+        // Simulate a small delay for better UX then redirect
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        window.open(whatsappUrl, '_blank');
+        setStatus('success');
+        setFormData({ name: '', phone: '', email: '', service: '', message: '' });
     };
 
     if (status === 'success') {
