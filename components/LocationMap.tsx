@@ -8,8 +8,8 @@ export default function LocationMap() {
                 scrolling="no"
                 marginHeight={0}
                 marginWidth={0}
-                src="https://maps.google.com/maps?q=10.0261027,76.2528949&z=15&output=embed"
-                className="grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                src="https://maps.google.com/maps?q=10.0260986,76.2554767&z=15&output=embed"
+                className="transition-all duration-700 ease-in-out"
                 title="Alan Engineering Works Location"
             >
             </iframe>
